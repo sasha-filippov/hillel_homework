@@ -25,16 +25,20 @@ def cache(max_limit=64):
             # Set the frequency count of the new cache key to 1
             deco._frequency[cache_key] = 1
             return result
-
         deco._cache = OrderedDict()
         deco._frequency = {}
         return deco
 
     return internal
 
-
+# dldld
 @cache(max_limit=64)
 def fetch_url(url, first_n=100):
     """Fetch a given url"""
     res = requests.get(url)
     return res.content[:first_n] if first_n else res.content
+
+fetch_url("https://google.com")
+fetch_url("https://wordvice.com/grammar-avoid-double-negatives/")
+fetch_url("https://google.com")
+
